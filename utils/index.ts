@@ -6,3 +6,13 @@ export const getPriorityColor = (priority: string) => {
         default: return '#6b7280';
     }
 };
+
+export const getStageColor = (stage: string) => {
+    switch (stage.toLowerCase()) {
+        case 'tillering':
+        case 'flowering': return '#22c55e';
+        case 'grain filling':
+        case 'silking': return '#f59e0b';
+        default: return '#3b82f6';
+    }
+};
