@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home } from 'lucide-react-native';
+import { Camera, Home, Sprout, TrendingUp, User } from 'lucide-react-native';
 
 export default function TabLayout() {
 
@@ -20,7 +20,7 @@ export default function TabLayout() {
           fontFamily: 'Inter-Medium',
           marginTop: 4,
         },
-        tabBarActiveTintColor: '#22c55e',
+        tabBarActiveTintColor: '#09712f',
         tabBarInactiveTintColor: '#9ca3af',
       }}>
       <Tabs.Screen
@@ -29,6 +29,42 @@ export default function TabLayout() {
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
             <Home size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="crops"
+        options={{
+          title: 'Crops',
+          tabBarIcon: ({ size, color }) => (
+            <Sprout size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="identify"
+        options={{
+          title: 'Identify',
+          tabBarIcon: ({ size, color }) => (
+            <Camera size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="market"
+        options={{
+          title: 'Market',
+          tabBarIcon: ({ size, color }) => (
+            <TrendingUp size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ size, color }) => (
+            <User size={size} color={color} />
           ),
         }}
       />

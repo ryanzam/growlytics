@@ -4,3 +4,10 @@ export interface WeatherData {
     windSpeed: number;
     condition: string;
 }
+
+export interface ICropRecommendation {
+    crop: string;
+    action: string;
+    priority: 'high' | 'medium' | 'low';
+    image: string;
+}

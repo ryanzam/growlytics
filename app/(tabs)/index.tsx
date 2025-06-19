@@ -1,7 +1,9 @@
-import { WeatherData } from '@/interfaces';
-import { Droplets, Sun, Wind } from 'lucide-react-native';
+import { ICropRecommendation, WeatherData } from '@/interfaces';
+import { recomendations } from '@/libs/data';
+import { getPriorityColor } from '@/utils';
+import { AlertTriangle, Calendar, Camera, Droplets, Sprout, Sun, TrendingUp, Wind } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const index = () => {
 
@@ -11,6 +13,8 @@ const index = () => {
         windSpeed: 12,
         condition: 'Partly Cloudy'
     });
+
+    const [recommendations, setRecommendations] = useState<ICropRecommendation[]>(recomendations)
 
     return (
         <SafeAreaView style={styles.container}>
@@ -50,6 +54,62 @@ const index = () => {
                         </View>
                     </View>
                 </View>
+
+                {/* Quick Actions */}
+                <View style={styles.quickActions}>
+                    <Text style={styles.sectionTitle}>Quick Actions</Text>
+                    <View style={styles.actionsGrid}>
+                        <TouchableOpacity style={styles.actionButton}>
+                            <Camera size={24} color="#09712f" />
+                            <Text style={styles.actionText}>Detect Pest</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.actionButton}>
+                            <TrendingUp size={24} color="#f59e0b" />
+                            <Text style={styles.actionText}>Market Prices</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.actionButton}>
+                            <Sprout size={24} color="#09712f" />
+                            <Text style={styles.actionText}>Crop Guide</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.actionButton}>
+                            <Calendar size={24} color="#3b82f6" />
+                            <Text style={styles.actionText}>Schedule</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                {/* AI Recommendations */}
+                <View style={styles.recommendations}>
+                    <Text style={styles.sectionTitle}>AI Recommendations</Text>
+                    {recommendations.map((rec, index) => (
+                        <TouchableOpacity key={index} style={styles.recommendationCard}>
+                            <Image source={{ uri: rec.image }} style={styles.cropImage} />
+                            <View style={styles.recommendationContent}>
+                                <View style={styles.recommendationHeader}>
+                                    <Text style={styles.cropName}>{rec.crop}</Text>
+                                    <View style={[styles.priorityBadge, { backgroundColor: getPriorityColor(rec.priority) }]}>
+                                        <Text style={styles.priorityText}>{rec.priority.toUpperCase()}</Text>
+                                    </View>
+                                </View>
+                                <Text style={styles.recommendationAction}>{rec.action}</Text>
+                            </View>
+                            <AlertTriangle size={20} color={getPriorityColor(rec.priority)} />
+                        </TouchableOpacity>
+                    ))}
+                </View>
+
+                {/* Market Alerts */}
+                <View style={styles.marketSection}>
+                    <Text style={styles.sectionTitle}>Market Alerts</Text>
+                    <View style={styles.marketCard}>
+                        <TrendingUp size={24} color="#09712f" />
+                        <View style={styles.marketContent}>
+                            <Text style={styles.marketTitle}>Rice prices up 15%</Text>
+                            <Text style={styles.marketSubtitle}>Best time to sell your harvest</Text>
+                        </View>
+                    </View>
+                </View>
+
             </ScrollView>
         </SafeAreaView>
     )
@@ -73,19 +133,19 @@ const styles = StyleSheet.create({
     },
     greeting: {
         fontSize: 24,
-        fontFamily: 'Inter-Bold',
+        fontFamily: 'Poppins-Bold',
         color: '#ffffff',
         marginBottom: 4,
     },
     subGreeting: {
         fontSize: 16,
-        fontFamily: 'Inter-Medium',
+        fontFamily: 'Poppins-Medium',
         color: '#dcfce7',
         marginBottom: 8,
     },
     date: {
         fontSize: 14,
-        fontFamily: 'Inter-Regular',
+        fontFamily: 'Poppins-Regular',
         color: '#dcfce7',
     },
     weatherCard: {
@@ -106,7 +166,7 @@ const styles = StyleSheet.create({
     },
     weatherTitle: {
         fontSize: 18,
-        fontFamily: 'Inter-SemiBold',
+        fontFamily: 'Poppins-SemiBold',
         color: '#1f2937',
         marginLeft: 8,
     },
@@ -120,12 +180,12 @@ const styles = StyleSheet.create({
     },
     temperature: {
         fontSize: 32,
-        fontFamily: 'Inter-Bold',
+        fontFamily: 'Poppins-Bold',
         color: '#1f2937',
     },
     condition: {
         fontSize: 14,
-        fontFamily: 'Inter-Regular',
+        fontFamily: 'Poppins-Regular',
         color: '#6b7280',
     },
     weatherDetails: {
@@ -139,7 +199,7 @@ const styles = StyleSheet.create({
     },
     weatherValue: {
         fontSize: 14,
-        fontFamily: 'Inter-Medium',
+        fontFamily: 'Poppins-Medium',
         color: '#1f2937',
         marginLeft: 8,
     },
@@ -149,7 +209,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 20,
-        fontFamily: 'Inter-Bold',
+        fontFamily: 'Poppins-Bold',
         color: '#1f2937',
         marginBottom: 16,
     },
@@ -173,7 +233,7 @@ const styles = StyleSheet.create({
     },
     actionText: {
         fontSize: 14,
-        fontFamily: 'Inter-Medium',
+        fontFamily: 'Poppins-Medium',
         color: '#1f2937',
         marginTop: 8,
         textAlign: 'center',
@@ -212,7 +272,7 @@ const styles = StyleSheet.create({
     },
     cropName: {
         fontSize: 16,
-        fontFamily: 'Inter-SemiBold',
+        fontFamily: 'Poppins-SemiBold',
         color: '#1f2937',
     },
     priorityBadge: {
@@ -222,12 +282,12 @@ const styles = StyleSheet.create({
     },
     priorityText: {
         fontSize: 10,
-        fontFamily: 'Inter-Bold',
+        fontFamily: 'Poppins-Bold',
         color: '#ffffff',
     },
     recommendationAction: {
         fontSize: 14,
-        fontFamily: 'Inter-Regular',
+        fontFamily: 'Poppins-Regular',
         color: '#6b7280',
     },
     marketSection: {
@@ -253,13 +313,13 @@ const styles = StyleSheet.create({
     },
     marketTitle: {
         fontSize: 16,
-        fontFamily: 'Inter-SemiBold',
+        fontFamily: 'Poppins-SemiBold',
         color: '#1f2937',
         marginBottom: 2,
     },
     marketSubtitle: {
         fontSize: 14,
-        fontFamily: 'Inter-Regular',
-        color: '#22c55e',
+        fontFamily: 'Poppins-Regular',
+        color: '#09712f',
     },
 })
