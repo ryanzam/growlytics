@@ -1,6 +1,19 @@
-# Welcome to your Expo app 👋
+# AI-Driven Agricultural Advisory Platform 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Growlytics is an AI-powered Software-as-a-Service (SaaS) platform tailored for farmers to enhance crop productivity and income. The platform delivers personalized crop management advice, pest detection, and market price predictions using AI, integrating satellite imagery, weather data, and soil analysis. It supports multi-languages, offers offline access, and targets smallholder farmers, cooperatives, and agribusinesses
+
+## Features
+- AI-Powered Crop Management
+
+- Pest and Disease Detection
+
+- Market Price Predictions
+
+- Multilingual and Offline Access
+
+- SMS Alerts
+
+- Cooperative Dashboard
 
 ## Get started
 
