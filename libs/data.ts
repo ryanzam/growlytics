@@ -1,4 +1,4 @@
-import { ICropData, ICropRecommendation } from "@/interfaces";
+import { ICropData, ICropRecommendation, IMarketAlert, IMarketPrice } from "@/interfaces";
 
 export const recomendations: ICropRecommendation[] = [
     {
@@ -71,3 +71,110 @@ export const cropData: ICropData[] = [
         recommendations: ['Install stakes for support', 'Remove suckers', 'Monitor for blight disease']
     }
 ]
+
+export const marketAlerts: IMarketAlert[] = [
+    {
+        id: '1',
+        type: 'price_surge',
+        crop: 'Tomato',
+        message: 'Tomato prices up 18% - Great time to sell!',
+        priority: 'high'
+    },
+    {
+        id: '2',
+        type: 'demand_high',
+        crop: 'Rice',
+        message: 'High demand for rice in urban markets',
+        priority: 'medium'
+    },
+    {
+        id: '3',
+        type: 'supply_low',
+        crop: 'Wheat',
+        message: 'Low wheat supply affecting prices',
+        priority: 'medium'
+    }
+];
+
+export const marketPrices: IMarketPrice[] = [
+    {
+        id: '1',
+        crop: 'Rice',
+        nepaliName: 'धान',
+        currentPrice: 35,
+        previousPrice: 32,
+        unit: 'per kg',
+        market: 'Kalimati',
+        lastUpdated: '2 hours ago',
+        trend: 'up',
+        prediction: {
+            nextWeek: 38,
+            trend: 'up',
+            confidence: 85
+        }
+    },
+    {
+        id: '2',
+        crop: 'Wheat',
+        nepaliName: 'गहुँ',
+        currentPrice: 42,
+        previousPrice: 45,
+        unit: 'per kg',
+        market: 'Kalimati',
+        lastUpdated: '1 hour ago',
+        trend: 'down',
+        prediction: {
+            nextWeek: 40,
+            trend: 'down',
+            confidence: 78
+        }
+    },
+    {
+        id: '3',
+        crop: 'Maize',
+        nepaliName: 'मकै',
+        currentPrice: 28,
+        previousPrice: 28,
+        unit: 'per kg',
+        market: 'Kalimati',
+        lastUpdated: '3 hours ago',
+        trend: 'stable',
+        prediction: {
+            nextWeek: 30,
+            trend: 'up',
+            confidence: 72
+        }
+    },
+    {
+        id: '4',
+        crop: 'Tomato',
+        nepaliName: 'गोलभेडा',
+        currentPrice: 65,
+        previousPrice: 55,
+        unit: 'per kg',
+        market: 'Kalimati',
+        lastUpdated: '30 minutes ago',
+        trend: 'up',
+        prediction: {
+            nextWeek: 70,
+            trend: 'up',
+            confidence: 90
+        }
+    },
+    {
+        id: '5',
+        crop: 'Potato',
+        nepaliName: 'आलु',
+        currentPrice: 25,
+        previousPrice: 30,
+        unit: 'per kg',
+        market: 'Kalimati',
+        lastUpdated: '1 hour ago',
+        trend: 'down',
+        prediction: {
+            nextWeek: 22,
+            trend: 'down',
+            confidence: 80
+        }
+    }
+];

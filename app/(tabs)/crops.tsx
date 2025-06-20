@@ -1,10 +1,13 @@
 import { cropData } from '@/libs/data';
 import { getStageColor } from '@/utils';
-import { Calendar, Droplets, Search, Sprout, Thermometer } from 'lucide-react-native';
+import { Calendar, Droplets, Sprout, Thermometer } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Categories from '../components/Categories';
+import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
 
-const CropSCreen = () => {
+const CropsTab = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
@@ -19,7 +22,6 @@ const CropSCreen = () => {
         if (selectedCategory === 'all') {
             return crop;
         } else {
-            console.log("else")
             return crop.category.toLowerCase() === selectedCategory.toLowerCase();
         }
     }
@@ -29,48 +31,14 @@ const CropSCreen = () => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                 {/* Header */}
-                <View style={styles.header}>
-                    <Text style={styles.title}>Crop Management</Text>
-                    <Text style={styles.subtitle}>बाली व्यवस्थापन</Text>
-                </View>
+                <Header title='Crops Management' subtitle='बाली व्यवस्थापन' />
 
                 {/* Search Bar */}
-                <View style={styles.searchContainer}>
-                    <View style={styles.searchBar}>
-                        <Search size={20} color="#9ca3af" />
-                        <TextInput
-                            style={styles.searchInput}
-                            placeholder="Search crops... / बाली खोज्नुहोस्..."
-                            value={searchQuery}
-                            onChangeText={setSearchQuery}
-                            placeholderTextColor="#9ca3af"
-                        />
-                    </View>
-                </View>
+                <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder='Search crops... / बाली खोज्नुहोस्...' />
 
                 {/* Categories */}
-                <View style={styles.categoriesContainer}>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        {categories.map((category) => (
-                            <TouchableOpacity
-                                key={category}
-                                style={[
-                                    styles.categoryButton,
-                                    selectedCategory === category && styles.categoryButtonActive
-                                ]}
-                                onPress={() => setSelectedCategory(category)}
-                            >
-                                <Text style={[
-                                    styles.categoryText,
-                                    selectedCategory === category && styles.categoryTextActive
-                                ]}>
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </ScrollView>
-                </View>
-
+                <Categories categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+               
                 {/* Crop Cards */}
                 <View style={styles.cropsContainer}>
                     {filteredCrops.map((crop) => (
@@ -137,7 +105,7 @@ const CropSCreen = () => {
     )
 }
 
-export default CropSCreen;
+export default CropsTab;
 
 const styles = StyleSheet.create({
     container: {
@@ -146,24 +114,6 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flex: 1,
-    },
-    header: {
-        backgroundColor: '#09712f',
-        padding: 20,
-        borderBottomLeftRadius: 24,
-        borderBottomRightRadius: 24,
-    },
-    title: {
-        fontSize: 24,
-        fontFamily: 'Poppins-Bold',
-        color: '#fff',
-        marginBottom: 4
-    },
-    subtitle: {
-        fontSize: 16,
-        fontFamily: 'Poppins-Medium',
-        color: '#fff',
-        marginBottom: 8
     },
     searchContainer: {
         padding: 20,

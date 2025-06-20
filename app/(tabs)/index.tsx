@@ -4,8 +4,9 @@ import { getPriorityColor } from '@/utils';
 import { AlertTriangle, Calendar, Camera, Droplets, Sprout, Sun, TrendingUp, Wind } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Header from '../components/Header';
 
-const index = () => {
+const HomeTab = () => {
 
     const [weather, setWeather] = useState<WeatherData>({
         temperature: 24,
@@ -20,16 +21,14 @@ const index = () => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                 {/* Header */}
-                <View style={styles.header}>
-                    <Text style={styles.greeting}>नमस्ते, किसान!</Text>
-                    <Text style={styles.subGreeting}>Good morning, Farmer!</Text>
+                <Header title='नमस्ते, किसान!' subtitle='Good morning, Farmer!'>
                     <Text style={styles.date}>{new Date().toLocaleDateString('en-US', {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
                     })}</Text>
-                </View>
+                </Header>
 
                 {/* Weather Card */}
                 <View style={styles.weatherCard}>
@@ -115,7 +114,7 @@ const index = () => {
     )
 }
 
-export default index
+export default HomeTab
 
 const styles = StyleSheet.create({
     container: {
@@ -124,24 +123,6 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flex: 1,
-    },
-    header: {
-        padding: 20,
-        backgroundColor: '#09712f',
-        borderBottomLeftRadius: 24,
-        borderBottomRightRadius: 24,
-    },
-    greeting: {
-        fontSize: 24,
-        fontFamily: 'Poppins-Bold',
-        color: '#ffffff',
-        marginBottom: 4,
-    },
-    subGreeting: {
-        fontSize: 16,
-        fontFamily: 'Poppins-Medium',
-        color: '#dcfce7',
-        marginBottom: 8,
     },
     date: {
         fontSize: 14,

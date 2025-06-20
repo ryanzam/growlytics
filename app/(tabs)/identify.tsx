@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const identify = () => {
+const IdentifyTab = () => {
     return (
         <View>
-            <Text>identify</Text>
+            <Text>IdentifyTab</Text>
         </View>
     )
 }
 
-export default identify
+export default IdentifyTab
 
 const styles = StyleSheet.create({})
