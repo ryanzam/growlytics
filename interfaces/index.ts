@@ -49,3 +49,10 @@ export interface IMarketAlert {
   message: string;
   priority: 'high' | 'medium' | 'low';
 }
+
+export interface IUserStats {
+  cropsManaged: number;
+  detectionsUsed: number;
+  marketAlerts: number;
+  daysActive: number;
+}

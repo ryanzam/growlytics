@@ -104,7 +104,7 @@ export const marketPrices: IMarketPrice[] = [
         currentPrice: 35,
         previousPrice: 32,
         unit: 'per kg',
-        market: 'Kalimati',
+        market: 'Gorkha',
         lastUpdated: '2 hours ago',
         trend: 'up',
         prediction: {
@@ -120,7 +120,7 @@ export const marketPrices: IMarketPrice[] = [
         currentPrice: 42,
         previousPrice: 45,
         unit: 'per kg',
-        market: 'Kalimati',
+        market: 'Gorkha',
         lastUpdated: '1 hour ago',
         trend: 'down',
         prediction: {
@@ -136,7 +136,7 @@ export const marketPrices: IMarketPrice[] = [
         currentPrice: 28,
         previousPrice: 28,
         unit: 'per kg',
-        market: 'Kalimati',
+        market: 'Pokhara',
         lastUpdated: '3 hours ago',
         trend: 'stable',
         prediction: {
@@ -152,7 +152,7 @@ export const marketPrices: IMarketPrice[] = [
         currentPrice: 65,
         previousPrice: 55,
         unit: 'per kg',
-        market: 'Kalimati',
+        market: 'Chitwan',
         lastUpdated: '30 minutes ago',
         trend: 'up',
         prediction: {
@@ -168,7 +168,7 @@ export const marketPrices: IMarketPrice[] = [
         currentPrice: 25,
         previousPrice: 30,
         unit: 'per kg',
-        market: 'Kalimati',
+        market: 'Balkhu',
         lastUpdated: '1 hour ago',
         trend: 'down',
         prediction: {
