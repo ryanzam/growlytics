@@ -1,6 +1,20 @@
 # Growlytics 👋
 AI-Driven Agricultural Advisory Platform
 
+**Built with the tools and technologies:**
+
+<div align="left">
+<img alt="ReactNative" src="https://img.shields.io/badge/ReactNative?style=flat&amp;logo=React&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="npm" src="https://img.shields.io/badge/npm-CB3837.svg?style=flat&amp;logo=npm&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&amp;logo=JavaScript&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
+<br>
+<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="Mongoose" src="https://img.shields.io/badge/-MongoDB-13aa52?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="ESLint" src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&amp;logo=ESLint&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="Axios" src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&amp;logo=Axios&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="datefns" src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss?style=flat&amp;logo=date-fns&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+</div>
+
 ## Features
 - AI-Powered Crop Management
 
@@ -13,19 +27,6 @@ AI-Driven Agricultural Advisory Platform
 - SMS Alerts
 
 - Cooperative Dashboard
-
-**Built with the tools and technologies:**
-
-<img alt="NextJs" src="https://img.shields.io/badge/next.js-000000?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="npm" src="https://img.shields.io/badge/npm-CB3837.svg?style=flat&amp;logo=npm&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&amp;logo=JavaScript&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
-<br>
-<img alt="React" src="https://img.shields.io/badge/ReactNative?style=flat&amp;logo=React&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="Mongoose" src="https://img.shields.io/badge/-MongoDB-13aa52?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="ESLint" src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&amp;logo=ESLint&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="Axios" src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&amp;logo=Axios&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
-<img alt="datefns" src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss?style=flat&amp;logo=date-fns&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
 
 ## Table of Contents
 
