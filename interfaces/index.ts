@@ -56,3 +56,14 @@ export interface IUserStats {
   marketAlerts: number;
   daysActive: number;
 }
+
+export interface DetectionResult {
+  disease: string;
+  nepaliName: string;
+  confidence: number;
+  severity: 'low' | 'medium' | 'high';
+  description: string;
+  treatment: string[];
+  prevention: string[];
+  image: string;
+}
