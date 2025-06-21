@@ -1,6 +1,5 @@
-# AI-Driven Agricultural Advisory Platform 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Growlytics is an AI-powered Software-as-a-Service (SaaS) platform tailored for farmers to enhance crop productivity and income. The platform delivers personalized crop management advice, pest detection, and market price predictions using AI, integrating satellite imagery, weather data, and soil analysis. It supports multi-languages, offers offline access, and targets smallholder farmers, cooperatives, and agribusinesses
+# Growlytics 👋
+AI-Driven Agricultural Advisory Platform
 
 ## Features
 - AI-Powered Crop Management
@@ -15,49 +14,84 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 - Cooperative Dashboard
 
-## Get started
+**Built with the tools and technologies:**
 
-1. Install dependencies
+<img alt="NextJs" src="https://img.shields.io/badge/next.js-000000?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="npm" src="https://img.shields.io/badge/npm-CB3837.svg?style=flat&amp;logo=npm&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&amp;logo=JavaScript&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
+<br>
+<img alt="React" src="https://img.shields.io/badge/ReactNative?style=flat&amp;logo=React&amp;logoColor=black" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="Mongoose" src="https://img.shields.io/badge/-MongoDB-13aa52?style=flat&amp;logo=TypeScript&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="ESLint" src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&amp;logo=ESLint&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="Axios" src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&amp;logo=Axios&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
+<img alt="datefns" src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss?style=flat&amp;logo=date-fns&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Testing](#testing)
+- [Contributing](#contributing)
+
+## Overview
+
+Growlytics is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). It is an AI-powered Software-as-a-Service (SaaS) platform tailored for farmers to enhance crop productivity and income. The platform delivers personalized crop management advice, pest detection, and market price predictions using AI, integrating satellite imagery, weather data, and soil analysis. It supports multi-languages, offers offline access, and targets smallholder farmers, cooperatives, and agribusinesses
+
+## Getting Started
+
+Ensure you have the following installed:
+
+- **Node.js**: v18.x or later
+- **npm**: v9.x or later
+- **Git**: For version control and cloning
+
+### Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ryanzam/growlytics.git
+   ```
+
+2. **Navigate to the project directory**:
+   ```bash
+   cd growlytics
+   ```
+
+3. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+4. **Start the development server**:
    ```bash
-   npx expo start
+   npm run dev
    ```
 
-In the output, you'll find options to open the app in a
+## Usage
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Access the application at `http://localhost:3000` after starting the server. The platform allows for creating customer segments, automating campaigns, and analyzing user interactions. Detailed usage instructions are available in the [wiki](https://github.com/ryanzam/growlytics/wiki).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Development
 
-## Get a fresh project
+- **Code Style**: Enforced with ESLint and Prettier for clean, maintainable code.
+- **Build Process**: Run `npm run build` to generate a production-ready build.
+- **Features**: Includes real-time analytics, drag-and-drop campaign editors, and integration with third-party platforms.
 
-When you're ready, run:
+## Testing
 
+Run unit tests with Jest:
 ```bash
-npm run reset-project
+npm test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contributing
 
-## Learn more
+I welcome contributions to enhance Growlytics! Please fork the repository, create a feature branch, and submit a pull request. Ensure code adheres to existing standards and includes relevant tests. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
