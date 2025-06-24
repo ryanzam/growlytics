@@ -1,22 +1,47 @@
+import { useAuth } from '@/contexts/AuthContext'
 import { IUserStats } from '@/interfaces'
 import { Bell, Calendar, Globe, HelpCircle, LogOut, Mail, MapPin, Phone, Settings, Shield, ShieldUser, Sprout, TrendingUp } from 'lucide-react-native'
-import React, { useState } from 'react'
-import { Alert, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../components/Header'
 import MenuSection, { MenuItem } from '../components/MenuSection'
 
 const ProfileTab = () => {
 
+    const { user, signOut } = useAuth();
+
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
     const [language, setLanguage] = useState('english');
-
-    const userStats: IUserStats = {
-        cropsManaged: 12,
-        detectionsUsed: 45,
+    const [userStats, setUserStats] = useState<IUserStats>({
+        cropsManaged: 0,
+        detectionsUsed: 0,
         marketAlerts: 23,
-        daysActive: 89
+        daysActive: 0
+    });
+
+    useEffect(() => {
+        loadUserStats();
+    }, [user]);
+
+    const loadUserStats = async () => {
+        if (!user) return;
+
+        try {
+            //const detections = await getUserDetections(user.id);
+            const daysActive = Math.floor((Date.now() - new Date(user.created_at || Date.now()).getTime()) / (1000 * 60 * 60 * 24));
+
+            setUserStats({
+                cropsManaged: 12, // This would come from crops table
+                detectionsUsed: 0,//detections.length,
+                marketAlerts: 23,
+                daysActive: Math.max(1, daysActive)
+            });
+        } catch (error) {
+            console.error('Error loading user stats:', error);
+        }
     };
+
 
     const handleLanguageToggle = () => {
         const newLanguage = language === 'english' ? 'nepali' : 'english';
@@ -29,24 +54,40 @@ const ProfileTab = () => {
     };
 
     const handleLogout = () => {
-        Alert.alert(
-            'Logout',
-            'Are you sure you want to logout?',
-            [
-                { text: 'Cancel', style: 'cancel' },
-                { text: 'Logout', style: 'destructive', onPress: () => console.log('Logout') }
-            ]
-        );
+        if (Platform.OS === 'web') {
+            signOut();
+            confirm('Are you sure you want to logout?') && window.location.replace('/auth/login');
+        } else {
+            Alert.alert(
+                'Logout',
+                'Are you sure you want to logout?',
+                [
+                    { text: 'Cancel', style: 'cancel' },
+                    {
+                        text: 'Logout', style: 'destructive', onPress: async () => {
+                            console.log('User logged out');
+                            await signOut();
+                            //router.replace('/auth/login');
+                        }
+                    }
+                ]
+            );
+        }
+    };
+
+    const getUserName = () => {
+        if (!user?.email) return 'User';
+        return user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1);
     };
 
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-                <Header title='Hary M.' subtitle='हरी म.'>
+                <Header title={getUserName()} subtitle={'किसान'}>
                     <View style={styles.headerContainer}>
                         <View style={styles.userLocationContainer}>
                             <MapPin size={14} color="#dcfce7" />
-                            <Text style={styles.userLocation}>Chitwan, Nepal</Text>
+                            <Text style={styles.userLocation}>{'Nepal'}</Text>
                         </View>
                         <ShieldUser size={50} color='#fff' style={styles.userIcon} />
                     </View>

@@ -1,3 +1,5 @@
+import { AuthError, Session, User } from '@supabase/supabase-js';
+
 export interface WeatherData {
   temperature: number;
   humidity: number;
@@ -66,4 +68,13 @@ export interface DetectionResult {
   treatment: string[];
   prevention: string[];
   image: string;
+}
+
+export interface AuthContextType {
+  session: Session | null;
+  user: User | null;
+  loading: boolean;
+  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
+  signUp: (email: string, password: string, fullName: string, nepaliName?: string) => Promise<{ error: any }>;
+  signOut: () => Promise<void>;
 }
