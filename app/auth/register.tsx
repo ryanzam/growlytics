@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
     form: {
         marginBottom: 40,
         paddingHorizontal: 16,
+        marginTop: 24,
     },
     inputContainer: {
         marginBottom: 16,
