@@ -3,6 +3,7 @@ import { Link, router } from 'expo-router';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Button from '../components/Button';
 import Header from '../components/Header';
 
 const LoginScreen = () => {
@@ -96,15 +97,7 @@ const LoginScreen = () => {
               </View>
             </View>
 
-            <TouchableOpacity
-              style={[styles.loginButton, loading && styles.loginButtonDisabled]}
-              onPress={handleLogin}
-              disabled={loading}
-            >
-              <Text style={styles.loginButtonText}>
-                {loading ? 'Signing In...' : 'Sign In'}
-              </Text>
-            </TouchableOpacity>
+            <Button title={loading ? 'Signing In...' : 'Sign In'} loading={loading} handleClick={handleLogin} />
 
             <View style={styles.divider}>
               <View style={styles.dividerLine} />

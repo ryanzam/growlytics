@@ -1,8 +1,8 @@
 import { useAuth } from '@/contexts/AuthContext';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { Eye, EyeOff, Lock, Mail, MapPin, Phone, User } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Button from '../components/Button';
 import Header from '../components/Header';
 
@@ -17,9 +17,60 @@ const RegisterScreen = () => {
     const [location, setLocation] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
     const { signUp, loading } = useAuth();
 
     const handleRegister = async () => {
+        if (!email || !password || !fullName) {
+            if (Platform.OS === 'web') {
+                alert('Please fill in all required fields');
+                return
+            } else {
+                Alert.alert('Error', 'Please fill in all required fields');
+                return;
+            }
+        }
+
+        if (password !== confirmPassword) {
+            if (Platform.OS === 'web') {
+                alert('Passwords do not match');
+                return;
+            } else {
+                Alert.alert('Error', 'Passwords do not match');
+                return;
+            }
+        }
+
+        if (password.length < 6) {
+            if (Platform.OS === 'web') {
+                alert('Password must be at least 6 characters long');
+                return;
+            } else {
+                Alert.alert('Error', 'Password must be at least 6 characters');
+                return;
+            }
+        }
+
+        const { error } = await signUp(email, password, fullName, nepaliName);
+
+        if (error) {
+            if (Platform.OS === 'web') {
+                alert(error.message);
+            } else {
+                Alert.alert('Registration Failed', error.message);
+            }
+        } else {
+            if (Platform.OS === 'web') {
+                alert('Registration successful! Please check your email for verification.');
+                router.replace('/auth/login');
+            } else {
+                Alert.alert(
+                    'Registration Successful',
+                    'Please check your email to verify your account.',
+                    [{ text: 'OK', onPress: () => router.replace('/auth/login') }]
+                );
+            }
+        }
     }
 
     return (
