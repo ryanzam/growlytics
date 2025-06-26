@@ -1,5 +1,6 @@
 import { useAuth } from '@/contexts/AuthContext'
 import { IUserStats } from '@/interfaces'
+import { router } from 'expo-router'
 import { Bell, Calendar, Globe, HelpCircle, LogOut, Mail, MapPin, Phone, Settings, Shield, ShieldUser, Sprout, TrendingUp } from 'lucide-react-native'
 import React, { useEffect, useState } from 'react'
 import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
@@ -67,7 +68,7 @@ const ProfileTab = () => {
                         text: 'Logout', style: 'destructive', onPress: async () => {
                             console.log('User logged out');
                             await signOut();
-                            //router.replace('/auth/login');
+                            router.replace('/auth/login');
                         }
                     }
                 ]
@@ -79,6 +80,10 @@ const ProfileTab = () => {
         if (!user?.email) return 'User';
         return user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1);
     };
+
+    if (!user) {
+        router.replace('/auth/login');
+    }
 
     return (
         <SafeAreaView style={styles.container}>
