@@ -1,5 +1,6 @@
 import { useAuth } from '@/contexts/AuthContext'
 import { IUserStats } from '@/interfaces'
+import { getUserDetections } from '@/services/aiService'
 import { router } from 'expo-router'
 import { Bell, Calendar, Globe, HelpCircle, LogOut, Mail, MapPin, Phone, Settings, Shield, ShieldUser, Sprout, TrendingUp } from 'lucide-react-native'
 import React, { useEffect, useState } from 'react'
@@ -29,12 +30,12 @@ const ProfileTab = () => {
         if (!user) return;
 
         try {
-            //const detections = await getUserDetections(user.id);
+            const detections = await getUserDetections(user.id);
             const daysActive = Math.floor((Date.now() - new Date(user.created_at || Date.now()).getTime()) / (1000 * 60 * 60 * 24));
 
             setUserStats({
                 cropsManaged: 12, // This would come from crops table
-                detectionsUsed: 0,//detections.length,
+                detectionsUsed: detections.length,
                 marketAlerts: 23,
                 daysActive: Math.max(1, daysActive)
             });

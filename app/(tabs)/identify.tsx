@@ -1,4 +1,6 @@
+import { useAuth } from '@/contexts/AuthContext'
 import { DetectionResult } from '@/interfaces'
+import { detectPlantDisease, saveDetectionResult } from '@/services/aiService'
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera'
 import { AlertCircle, Camera, CheckCircle, ImageIcon, Lightbulb, RotateCcw, Scan, XCircle } from 'lucide-react-native'
 import React, { useRef, useState } from 'react'
@@ -14,6 +16,8 @@ const IdentifyTab = () => {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [detectionResult, setDetectionResult] = useState<DetectionResult | null>(null);
     const cameraRef = useRef<CameraView>(null);
+
+    const { user } = useAuth();
 
     if (!permission) {
         return <View style={styles.container} />;
@@ -52,35 +56,23 @@ const IdentifyTab = () => {
     };
 
     const analyzeImage = async (imageUri: string) => {
+        if (!user) return
+
         setIsAnalyzing(true);
 
-        // Simulate AI analysis
-        setTimeout(() => {
-            const mockResult: DetectionResult = {
-                disease: 'Brown Spot',
-                nepaliName: 'खैरो दाग रोग',
-                confidence: 87,
-                severity: 'medium',
-                description: 'Brown spot is a fungal disease that affects rice plants, causing brown spots on leaves and reducing yield.',
-                treatment: [
-                    'Apply fungicide containing mancozeb',
-                    'Remove affected leaves and burn them',
-                    'Improve field drainage',
-                    'Apply balanced fertilizer'
-                ],
-                prevention: [
-                    'Use disease-resistant varieties',
-                    'Maintain proper plant spacing',
-                    'Avoid excessive nitrogen fertilization',
-                    'Ensure good field drainage'
-                ],
-                image: imageUri
-            };
+        try {
+            const result = await detectPlantDisease(imageUri);
+            setDetectionResult(result);
 
-            setDetectionResult(mockResult);
+            // Save detection to database
+            await saveDetectionResult(user.id, imageUri, result);
+        } catch (error) {
+            console.error('Error analyzing image:', error);
+            Alert.alert('Error', 'Failed to analyze image');
+        } finally {
             setIsAnalyzing(false);
-        }, 3000);
-    };
+        }
+    }
 
     const resetDetection = () => {
         setCapturedImage(null);

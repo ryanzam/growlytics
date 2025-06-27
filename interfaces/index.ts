@@ -67,7 +67,7 @@ export interface DetectionResult {
   description: string;
   treatment: string[];
   prevention: string[];
-  image: string;
+  image?: string;
 }
 
 export interface AuthContextType {
