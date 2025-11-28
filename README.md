@@ -1,4 +1,4 @@
-# Growlytics 👋
+# Growlytics 🌾
 AI-Driven Agricultural Advisory Platform
 
 <div>
