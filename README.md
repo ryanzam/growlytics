@@ -9,7 +9,7 @@ AI-Driven Agricultural Advisory Platform
 
 <br/>
 
-![growlytics](https://github.com/user-attachments/assets/a43ca391-e89c-4ad0-8e7c-c5c8c3547716)
+![Screen-Recording (online-video-cutter com)](https://github.com/user-attachments/assets/3a7c07c5-7f49-4595-adc2-a786e60f9199)
 
 **Built with the tools and technologies:**
 
