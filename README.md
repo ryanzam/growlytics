@@ -7,6 +7,10 @@ AI-Driven Agricultural Advisory Platform
   <img alt="repo-language-count" src="https://img.shields.io/github/languages/count/ryanzam/growlytics?style=flat&amp;color=0080ff" class="inline-block mx-1" style="margin: 0px 2px;">
 </div>
 
+<br/>
+
+![growlytics](https://github.com/user-attachments/assets/a43ca391-e89c-4ad0-8e7c-c5c8c3547716)
+
 **Built with the tools and technologies:**
 
 <div align="left">
