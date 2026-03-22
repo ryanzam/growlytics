@@ -23,6 +23,9 @@ AI-Driven Agricultural Advisory Platform
 <img alt="ESLint" src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&amp;logo=ESLint&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
 <img alt="Axios" src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&amp;logo=Axios&amp;logoColor=white" class="inline-block mx-1" style="margin: 0px 2px;">
 </div>
+<br>
+
+[LIVE DEMO](https://growlytics--ocr6mdkj5v.expo.app/)
 
 ## Features
 - AI-Powered Crop Management
