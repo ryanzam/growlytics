@@ -3,11 +3,9 @@ import { supabase } from '@/libs/supabase';
 
 export async function detectPlantDisease(imageUri: string): Promise<DetectionResult> {
     try {
-        // Convert image to base64 for API
         const response = await fetch(imageUri);
         const blob = await response.blob();
 
-        // Create FormData for PlantNet API
         const formData = new FormData();
         formData.append('images', blob);
         formData.append('modifiers', JSON.stringify(['crops_fast']));
@@ -27,7 +25,6 @@ export async function detectPlantDisease(imageUri: string): Promise<DetectionRes
 
         const plantData = await plantNetResponse.json();
 
-        // Process the response and determine disease
         const result = await processPlantNetResponse(plantData);
         return result;
     } catch (error) {
@@ -36,6 +33,7 @@ export async function detectPlantDisease(imageUri: string): Promise<DetectionRes
         return getMockDiseaseResult();
     }
 }
+
 async function processPlantNetResponse(plantData: any): Promise<DetectionResult> {
     // use an actual ai deteection later.
 
@@ -96,7 +94,6 @@ async function processPlantNetResponse(plantData: any): Promise<DetectionResult>
         }
     ];
 
-    // Randomly select a disease for demonstration
     const selectedDisease = diseases[Math.floor(Math.random() * diseases.length)];
     const confidence = Math.floor(Math.random() * 20) + 75; // 75-95% confidence
 
@@ -158,7 +155,6 @@ export async function saveDetectionResult(
     }
 }
 
-// Get user's detection history
 export async function getUserDetections(userId: string) {
     try {
         const { data, error } = await supabase
